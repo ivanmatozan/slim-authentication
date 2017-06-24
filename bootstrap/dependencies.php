@@ -25,8 +25,21 @@ $container['view'] = function ($container) {
     return $twig;
 };
 
+// Validator
+$container['validator'] = function () {
+    return new \App\Validation\Validator();
+};
+
+// Validation rules
+Respect\Validation\Validator::with('App\Validation\Rules');
 
 // HomeController
 $container['HomeController'] = function ($container) {
     return new \App\Controllers\HomeController($container);
 };
+
+// AuthController
+$container['AuthController'] = function ($container) {
+    return new \App\Controllers\Auth\AuthController($container);
+};
+
