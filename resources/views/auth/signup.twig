@@ -10,6 +10,8 @@
                 <div class="panel-body">
                     <form action="{{ path_for('auth.signup') }}" method="post" class="form">
 
+                        {{ csrf.field | raw }}
+
                         <div class="form-group {{ errors.email ? 'has-error' : '' }}">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" placeholder="you@domain.com"

@@ -25,6 +25,11 @@ $container['view'] = function ($container) {
     return $twig;
 };
 
+// CSRF
+$container['csrf'] = function ($container) {
+    return new \Slim\Csrf\Guard();
+};
+
 // Validator
 $container['validator'] = function () {
     return new \App\Validation\Validator();
