@@ -13,6 +13,11 @@ $container['db'] = function () use ($capsule) {
     return $capsule;
 };
 
+// Auth
+$container['auth'] = function ($container) {
+    return new App\Auth\Auth();
+};
+
 // Twig
 $container['view'] = function ($container) {
     $twig = new \Slim\Views\Twig(__DIR__ . '/../resources/views');
@@ -21,6 +26,11 @@ $container['view'] = function ($container) {
         $container->router,
         $container->request->getUri()
     ));
+
+    $twig->getEnvironment()->addGlobal('auth', [
+        'check' => $container->auth->check(),
+        'user' => $container->auth->user()
+    ]);
 
     return $twig;
 };
