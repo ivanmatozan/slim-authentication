@@ -65,3 +65,8 @@ $container['AuthController'] = function ($container) {
     return new \App\Controllers\Auth\AuthController($container);
 };
 
+// PasswordController
+$container['PasswordController'] = function ($container) {
+    return new \App\Controllers\Auth\PasswordController($container);
+};
+
