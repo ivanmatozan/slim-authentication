@@ -13,9 +13,14 @@ $container['db'] = function () use ($capsule) {
     return $capsule;
 };
 
+// Flash messages
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
+
 // Auth
 $container['auth'] = function ($container) {
-    return new App\Auth\Auth();
+    return new \App\Auth\Auth();
 };
 
 // Twig
@@ -31,6 +36,8 @@ $container['view'] = function ($container) {
         'check' => $container->auth->check(),
         'user' => $container->auth->user()
     ]);
+
+    $twig->getEnvironment()->addGlobal('flash', $container->flash);
 
     return $twig;
 };
