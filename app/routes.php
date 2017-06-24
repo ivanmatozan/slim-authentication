@@ -1,5 +1,3 @@
 <?php
 
-$app->get('/', function ($request, $response) {
-    return $this->view->render($response, 'home.twig');
-})->setName('home');
+$app->get('/', 'HomeController:index')->setName('home');

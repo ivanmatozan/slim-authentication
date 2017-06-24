@@ -13,3 +13,8 @@ $container['view'] = function ($container) {
 
     return $twig;
 };
+
+// HomeController
+$container['HomeController'] = function ($container) {
+    return new \App\Controllers\HomeController($container);
+};
